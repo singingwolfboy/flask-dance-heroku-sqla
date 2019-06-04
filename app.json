@@ -1,0 +1,31 @@
+{
+  "name": "Flask-Dance with Heroku & SQLAlchemy",
+  "description": "Testing Flask-Dance's OAuth integration with Heroku using SQLAlchemy",
+  "keywords": [
+    "oauth"
+  ],
+  "website": "https://github.com/singingwolfboy/flask-dance-heroku-sqla",
+  "repository": "https://github.com/singingwolfboy/flask-dance-heroku-sqla",
+  "env": {
+    "FLASK_SECRET_KEY": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "OAUTHLIB_RELAX_TOKEN_SCOPE": {
+      "description": "Indicates that it's OK for Heroku to return different OAuth scopes than requested.",
+      "value": "true"
+    },
+    "HEROKU_OAUTH_CLIENT_ID": {
+      "description": "The OAuth client ID for your application, assigned by Heroku",
+      "value": "app-id-goes-here"
+    },
+    "HEROKU_OAUTH_CLIENT_SECRET": {
+      "description": "The OAuth client secret for your application, assigned by Heroku",
+      "value": "app-secret-goes-here"
+    }
+  },
+  "addons": [{ "plan": "heroku-postgresql" }],
+  "scripts": {
+    "postdeploy": "flask createdb"
+  }
+}
